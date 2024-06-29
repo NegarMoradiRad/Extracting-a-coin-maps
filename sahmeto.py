@@ -16,6 +16,9 @@ if response.status_code == 200:
     
     data_dict = xmltodict.parse(xml_data)
 
+for url in data_dict['urlset']['url']:
+    coin_name = url['loc'].split('/')[-1]  
+    url['name'] = coin_name
     
     json_data = json.dumps(data_dict, indent=4)
 
